@@ -2,7 +2,7 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import { protectRoutes } from './modules/auth'
-import { createNewUser, signin } from './handlers/user'
+import { signup, signin } from './handlers/user'
 
 const app = express()
 
@@ -17,7 +17,7 @@ app.use((req, res, next) => { // example of custom middleware used to augment th
 // all future routes need to go here
 app.use('/api', protectRoutes) 
 
-app.post('/user', createNewUser)
+app.post('/signup', signup)
 app.post('/signin', signin)
 
 export default app
